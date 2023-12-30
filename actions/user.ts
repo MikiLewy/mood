@@ -1,6 +1,19 @@
 import { prisma } from '@/utils/db';
-import { currentUser } from '@clerk/nextjs';
+import { auth, currentUser } from '@clerk/nextjs';
+import { User } from '@prisma/client';
 import { redirect } from 'next/navigation';
+
+export const getUserByClerkID = async (): Promise<User> => {
+  const { userId } = auth();
+
+  const user = await prisma.user.findUniqueOrThrow({
+    where: {
+      clerkId: userId as string,
+    },
+  });
+
+  return user;
+};
 
 export const createNewUser = async () => {
   const user = await currentUser();
