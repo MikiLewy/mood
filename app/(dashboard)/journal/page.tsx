@@ -1,5 +1,6 @@
 import EntryCard from '@/components/EntryCard';
 import NewEntryCard from '@/components/NewEntryCard';
+import { analyzeEntry } from '@/utils/ai';
 import { getUserByClerkID } from '@/utils/auth';
 import { prisma } from '@/utils/db';
 import Link from 'next/link';
@@ -21,8 +22,6 @@ export const getEntries = async () => {
 
 const JournalPage = async () => {
   const entries = await getEntries();
-
-  console.log(entries);
 
   return (
     <main className="p-10 bg-zinc-400/10 h-full">

@@ -19,6 +19,9 @@ const getEntry = async (entryId: string): Promise<JournalEntry> => {
         id: entryId,
       },
     },
+    include: {
+      analysis: true,
+    },
   });
 
   return entry;
@@ -27,13 +30,7 @@ const getEntry = async (entryId: string): Promise<JournalEntry> => {
 const EntryPage = async ({ params }: Props) => {
   const entry = await getEntry(params.id);
 
-  console.log(entry);
-
-  return (
-    <div className="h-full w-full">
-      <Editor entry={entry} />
-    </div>
-  );
+  return <Editor entry={entry} />;
 };
 
 export default EntryPage;
