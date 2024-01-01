@@ -21,6 +21,7 @@ export const POST = async () => {
       data: {
         ...analysis,
         entryId: entry.id,
+        userId: user.id,
       },
     });
   }

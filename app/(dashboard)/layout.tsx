@@ -10,6 +10,10 @@ const links = [
     href: '/journal',
     label: 'Journal',
   },
+  {
+    href: '/history',
+    label: 'History',
+  },
 ];
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
